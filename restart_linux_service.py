@@ -130,13 +130,13 @@ def send_log_via_email(sender, email_recipient, service_name):
         print(message)
 
 # Nom du service à vérifier et à redémarrer
-service_name = "operis-9.4.8"
+service_name = "your_service_name"
 
 # Adresse email pour l'envoi du fichier de log
-email_recipient = "kevin.guilleux@operis.fr,franck.verbaere@operis.fr,samuel.bourguit@operis.fr,remi.mounier@operis.fr"
+email_recipient = "your_email_recipient"
 
 # Émetteur du message
-sender = "nagios@operis.fr"
+sender = "your_email_sender"
 
 # Vérifier si le service est activé , redémarrage du service si celui-ci n'est pas actif
 if not check_service_running(service_name):
