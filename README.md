@@ -21,6 +21,8 @@ Le programme a été conçu avec le language Python (Version 3.11).
 
 3- Vous pouvez appliquer vos propres paramètres en modifiant le script
 
+4- Il est possible d'indiquer plusieurs destinataires pour l'envoi de mail
+
 ## Running the tests
 
 Le programme a été conçu dans un environnement de développement intégré(IDE) sur l'OS Windows 11 64Bits.
