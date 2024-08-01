@@ -17,11 +17,22 @@ Le programme a été conçu avec le language Python (Version 3.11).
 
 1- Copiez le programme dans le répertoire de votre choix
 
-2- Pour utiliser ce script, exécutez la commande suivante : python3 restart_linux_service.py
+2- Ajustez les variables suivantes selon votre situation :
 
-3- Vous pouvez appliquer vos propres paramètres en modifiant le script
+Nom du service à surveiller et à redémarrer :
+service_name = "your_service_name"
 
-4- Il est possible d'indiquer plusieurs destinataires pour l'envoi de mail
+Adresse e-mail pour l'envoi des logs :
+email_recipient = "your_email_recipient"
+
+Adresse e-mail de l'expéditeur :
+sender = "your_email_sender"
+
+3- Pour utiliser ce script, exécutez la commande suivante : python3 restart_linux_service.py
+
+4- Vous pouvez appliquer vos propres paramètres en modifiant le script
+
+5- Il est possible d'indiquer plusieurs destinataires pour l'envoi de mail
 
 ## Running the tests
 
