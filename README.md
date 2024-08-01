@@ -9,7 +9,7 @@ Il est utile pour les administrateurs système ou les développeurs DevOps qui o
 
 ### Prerequisites
 
-L'utilisation du programme nécessite l'acquisition d'un système d'exploitation Linux : Debian / CentOS / Ubuntu...
+L'utilisation du programme nécessite l'acquisition d'un système d'exploitation Linux : Debian / Red Hat / Oracle Linux / Ubuntu...
 
 Le programme a été conçu avec le language Python (Version 3.11).
 
