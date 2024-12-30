@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 # coding=utf-8
 
-import subprocess
-import datetime
+from datetime import datetime
 import time
+import subprocess
 import logging
 import os
 import platform
@@ -14,6 +14,10 @@ log_file = os.path.join(log_directory, 'service_restart.log')
 
 # Configuration du logging
 logging.basicConfig(filename=log_file, level=logging.INFO, format='%(asctime)s - %(levelname)s: %(message)s')
+
+# Fonction pour récupérer l'heure et la date
+def get_current_datetime(format="%d-%m-%Y %H:%M:%S"):
+    return datetime.now().strftime(format)
 
 # Fonction pour récupérer le hostname du serveur
 def get_hostname():
@@ -88,15 +92,13 @@ def get_service_stats(service_name, silent=False):
 # Fonction pour redémarrer le service
 def restart_service(service_name):
     try:
-        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        message = f"{current_time} - Redémarrage du service {service_name} en cours..."
+        message = f"{get_current_datetime()} - Redémarrage du service {service_name} en cours..."
         logging.info(message)
         print(message)
 
         subprocess.run(["systemctl", "restart", service_name], check=True)
 
-        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        message = f"{current_time} - Le service {service_name} a été redémarré."
+        message = f"{get_current_datetime()} - Le service {service_name} a été redémarré."
         logging.info(message)
         print(message)
     except subprocess.CalledProcessError as e:
@@ -112,7 +114,7 @@ def wait_for_service():
 def send_log_via_email(sender, email_recipient, service_name):
     subject = f"Rédemarrage du service {service_name} sur le serveur {get_hostname()}"
     stats = get_service_stats(service_name, silent=True)
-    body = f"Alerte {get_hostname()}:\n\nVoici les statistiques du service {service_name}:\n\n{stats}\n\nLe fichier de log est en pièce jointe."
+    body = f"Alerte {get_hostname()} : {get_current_datetime()} :\n\nVoici les statistiques du service {service_name} :\n\n{stats}\n\nLe fichier de log est en pièce jointe."
 
     try:
         process = subprocess.Popen(
@@ -130,13 +132,13 @@ def send_log_via_email(sender, email_recipient, service_name):
         print(message)
 
 # Nom du service à vérifier et à redémarrer
-service_name = "your_service_name"
+service_name = "operis-9.4.8"
 
 # Adresse email pour l'envoi du fichier de log
-email_recipient = "your_email_recipient"
+email_recipient = "kevin.guilleux@operis.fr,franck.verbaere@operis.fr,samuel.bourguit@operis.fr,remi.mounier@operis.fr"
 
 # Émetteur du message
-sender = "your_email_sender"
+sender = "nagios@operis.fr"
 
 # Vérifier si le service est activé , redémarrage du service si celui-ci n'est pas actif
 if not check_service_running(service_name):
